@@ -1,0 +1,18 @@
+service: lambda-time
+provider:
+  name: aws
+  runtime: go1.x
+  environment:
+    EPSAGON_TOKEN: "***********"
+package:
+  exclude:
+    - ./**
+  include:
+    - ./bin/**
+functions:
+  lambda-time:
+    handler: bin/lambda-time
+    events:
+      - http:
+          path: /
+          method: get
